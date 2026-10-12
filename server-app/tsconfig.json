@@ -1,0 +1,29 @@
+{
+  "compilerOptions": {
+    /* File Layout & Paths */
+    "rootDir": "./src",                        /* Forces TS to read from the src folder */
+    "outDir": "./dist",                       /* Forces TS to output to the dist folder */
+
+    /* Environment Settings */
+    "module": "NodeNext",                      /* Handles modern Node.js module loading */
+    "moduleResolution": "NodeNext",
+    "target": "ES2022",                        /* Generates modern, clean JavaScript code */
+    "types": ["node"],                         /* Gives TypeScript access to Node globals like process */
+
+    /* Other Outputs */
+    "sourceMap": true,
+    "declaration": true,
+    "declarationMap": true,
+
+    /* Stricter Typechecking Options */
+    "strict": true,                            /* Enables strict type checking guards */
+    "noUncheckedIndexedAccess": true,
+    "exactOptionalPropertyTypes": true,
+
+    /* Interop Constraints */
+    "esModuleInterop": true,                   /* Fixes import issues between modern and old packages */
+    "skipLibCheck": true,                      /* Speeds up builds by ignoring third-party type errors */
+    "forceConsistentCasingInFileNames": true   /* Avoids errors when moving projects between Mac/Windows */
+  },
+  "include": ["src/**/*"]                      /* Tell TS exactly which files to compile */
+}

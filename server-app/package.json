@@ -1,0 +1,28 @@
+{
+  "name": "url-shortner-apis",
+  "version": "1.0.0",
+  "description": "This project contains shortner apis url",
+  "type": "module",
+  "main": "server.js",
+  "scripts": {
+    "build": "npx tsc",
+    "start": "npx tsc && node ./dist/server.js",
+    "dev": "nodemon --config src/nodemon.json src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ashwini Waghmare",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.4",
+    "express": "^5.2.1",
+    "mongoose": "^9.10.3",
+    "nanoid": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.23.15",
+    "typescript": "^5.6.3"
+  }
+}
