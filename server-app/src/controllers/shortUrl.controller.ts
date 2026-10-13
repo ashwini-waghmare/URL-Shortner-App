@@ -39,25 +39,41 @@ export const getAllUrl = async (
     }        
 };
 
+
 export const getUrl = async (
-    req: express.Request, 
+    req: express.Request,
     res: express.Response
 ) => {
     try {
+        const id = req.params.id;
 
-      const shortUrl = await urlModel.findOne({ shortUrl: req.params.id });
+        if (typeof id !== "string" || !id) {
+            return res.status(400).send({
+                message: "Invalid short URL"
+            });
+        }
 
-      if(!shortUrl){
-        res.status(404).send({ message: "ShortUrl not found" });
-      }else{
+        const shortUrl = await urlModel.findOne({
+            shortUrl: id
+        });
+
+        if (!shortUrl) {
+            return res.status(404).send({
+                message: "ShortUrl not found"
+            });
+        }
+
         shortUrl.clicks++;
-        shortUrl.save();
-        res.redirect(`${shortUrl.fullUrl}`);
-      }
-    }catch (error) {
-        res.status(500).send({ message: "Something went wrong" });
+        await shortUrl.save();
+
+        return res.redirect(shortUrl.fullUrl);
+
+    } catch (error) {
+        console.error("Get URL error:", error);
+        return res.status(500).send({
+            message: "Something went wrong"
+        });
     }
-    
 };
 
 export const deleteUrl = async (
