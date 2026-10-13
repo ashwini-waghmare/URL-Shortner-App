@@ -10,16 +10,19 @@ connectDb();
 const PORT = process.env.PORT || 5001;
 
 const app = express();
+
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+
 app.use(
-    cors({
-       origin: "http://localhost:3000",
-       credentials: true,
-    }
-))
+  cors({
+    origin: "https://adventurous-victory-production-0363.up.railway.app",
+    credentials: true,
+  })
+);
 
 app.use("/api/", shortUrl);
+
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+  console.log(`Server is running on port ${PORT}`);
 });
